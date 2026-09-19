@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markets</title>
+<link rel="stylesheet" href="market.css">
+</head>
+<body>
+
+  <div class="ticker-wrap"><div class="ticker-track" id="tickerTrack">Loading ticker…</div></div>
+
+  <header>
+    <div class="title-block">
+      <h1> Finance Market Dashboard</h1>
+      <p>Gold · Silver · Global &amp; Indian indices</p>
+    </div>
+    <div class="sync-block">
+      <span><span class="status-dot"></span><span id="lastUpdated">syncing…</span></span>
+      <span id="countdown">next sync in 03:00:00</span>
+      <button id="refreshBtn" onclick="refreshAll(true)">Refresh</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-label">Metals<span class="section-note">USD & INR / troy oz</span></div>
+    <div class="grid" id="metalsGrid"></div>
+
+    <div class="section-label">Indices</div>
+    <div class="grid" id="indicesGrid"></div>
+  </main>
+
+  <footer>
+    Auto-refreshes every 3 hrs · data from public market feeds, may lag live exchange prices by a few minutes · not financial advice
+  </footer>
+
+<script src = "market.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+  :root{
+    --bg: #0b0e11;
+    --panel: #12161b;
+    --panel-border: #1f252c;
+    --text: #e8eaed;
+    --muted: #7b8794;
+    --gold: #d4a64a;
+    --silver: #b8c0c8;
+    --up: #00d68f;
+    --down: #ff4d4d;
+    --flat: #7b8794;
+    --mono: ui-monospace, "SF Mono", "IBM Plex Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  /* Ticker marquee */
+  .ticker-wrap{
+    background: #000;
+    border-bottom: 1px solid var(--panel-border);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 9px 0;
+  }
+  .ticker-track{
+    display: inline-block;
+    animation: scroll 32s linear infinite;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+  }
+  .ticker-wrap:hover .ticker-track{ animation-play-state: paused; }
+  .ticker-item{ display:inline-flex; align-items:center; margin-right: 36px; color: var(--muted); }
+  .ticker-item b{ color: var(--text); margin-right: 8px; font-weight: 600; }
+  .ticker-item .chg.up{ color: var(--up); }
+  .ticker-item .chg.down{ color: var(--down); }
+  @keyframes scroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  header{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .title-block h1{
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .title-block p{
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  .sync-block{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .sync-block .status-dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--up);
+    display:inline-block;
+    margin-right:6px;
+    box-shadow: 0 0 0 0 rgba(0,214,143,0.5);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(0,214,143,0.45); }
+    70%{ box-shadow: 0 0 0 6px rgba(0,214,143,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(0,214,143,0); }
+  }
+  #refreshBtn{
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  #refreshBtn:hover{ border-color: #3a4450; }
+  #refreshBtn:focus-visible{ outline: 2px solid var(--gold); outline-offset: 2px; }
+  #refreshBtn.spinning{ opacity: 0.6; pointer-events: none; }
+
+  main{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px 20px;
+  }
+
+  .section-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin: 26px 0 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--panel-border);
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+ .card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: #303943;
+    background: #151a20;
+  }
+
+  .card::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width: 3px;
+    background: var(--accent, var(--muted));
+  }
+  .card.metal::before{ background: var(--gold); }
+  .card.silver::before{ background: var(--silver); }
+
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom: 10px;
+  }
+  .card-name{ font-size: 13px; font-weight: 600; color: var(--text); }
+  .card-sub{ font-size: 11px; color: var(--muted); font-family: var(--mono); margin-top: 2px; }
+
+  .card-price {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .card-price.loading{ color: var(--muted); font-size: 15px; font-weight: 400; }
+
+  .card-change{
+    font-family: var(--mono);
+    font-size: 13px;
+    margin-top: 6px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .card-change.up{ color: var(--up); }
+  .card-change.down{ color: var(--down); }
+  .card-change.flat{ color: var(--flat); }
+
+  .card-error{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--down);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 10px;
+  }
+  .card-error button{
+    background:none;
+    border: 1px solid var(--panel-border);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    cursor:pointer;
+  }
+  .card-error button:hover{ color: var(--text); border-color: #3a4450; }
+
+  footer{
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding: 16px 20px 0;
+    border-top: 1px solid var(--panel-border);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px){
+    .card-price{ font-size: 22px; }
+    header{ flex-direction: column; align-items: flex-start; }
+  }
+
+  .metal-inr {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 8px;
+}
+
+.card.silver .metal-inr {
+    color: var(--silver);
+}
+
+.metal-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.section-note {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+/* Metal INR price */
+.metal-inr {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-top: 8px;
+}
+
+.card.silver .metal-inr {
+  color: var(--silver);
+}
+
+.metal-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}

@@ -1,0 +1,21 @@
+{
+    "source": "LiveMint",
+    "source_url": "https://livemint.com",
+    "updated_at": "2026-09-19T08:12:21.421076+00:00",
+    "indices": {
+        "NAS100": {
+            "name": "NASDAQ 100",
+            "price": 29674.6,
+            "change": 228.7,
+            "change_percent": 0.78,
+            "market_time": "2026-09-18-20:00"
+        },
+        "SPX500": {
+            "name": "S&P 500",
+            "price": 7662.1,
+            "change": 21.9,
+            "change_percent": 0.29,
+            "market_time": "2026-09-18-20:00"
+        }
+    }
+}

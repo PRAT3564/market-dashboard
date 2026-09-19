@@ -1,0 +1,32 @@
+name: Market Scraper Automation
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # Automatically fires every 3 hours
+  workflow_dispatch:      
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy project code from repo
+        uses: actions/checkout@v4
+
+      - name: Initialize Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9.13'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Execute data extraction script
+        run: python scraper.py
+
+      - name: Save and Commit Data changes back to Repo
+        run: |
+          git config --global user.name "Market Scraper Bot"
+          git config --global user.email "scraper-bot@github.com"
+          git add indian_indices.json us_indices.json
+          # Commit and push only if the values have changed
+          git diff-index --quiet HEAD || (git commit -m "Auto-update market data files [skip ci]" && git push)
