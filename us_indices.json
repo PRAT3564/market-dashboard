@@ -1,21 +1,21 @@
 {
     "source": "LiveMint",
     "source_url": "https://livemint.com",
-    "updated_at": "2026-09-21T19:54:46.179012+00:00",
+    "updated_at": "2026-09-21T23:57:24.538618+00:00",
     "indices": {
         "NAS100": {
             "name": "NASDAQ 100",
-            "price": 29674.6,
-            "change": 228.7,
-            "change_percent": 0.78,
-            "market_time": "2026-09-18-20:00"
+            "price": 30524.15,
+            "change": 836.3,
+            "change_percent": 2.82,
+            "market_time": "2026-09-21-20:00"
         },
         "SPX500": {
             "name": "S&P 500",
-            "price": 7662.1,
-            "change": 21.9,
-            "change_percent": 0.29,
-            "market_time": "2026-09-18-20:00"
+            "price": 7774.5,
+            "change": 108.85,
+            "change_percent": 1.42,
+            "market_time": "2026-09-21-20:00"
         }
     }
 }
