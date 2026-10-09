@@ -1,16 +1,16 @@
 {
     "source": "LiveMint",
-    "updated_at": "2026-10-09T01:04:23.255704+00:00",
+    "updated_at": "2026-10-09T10:16:26.208863+00:00",
     "indices": {
         "sensex": {
-            "price": 71593.24,
-            "change": -1045.46,
-            "change_percent": -1.44
+            "price": 72472.33,
+            "change": 879.09,
+            "change_percent": 1.23
         },
         "nifty50": {
-            "price": 22231.8,
-            "change": -371.25,
-            "change_percent": -1.64
+            "price": 22520.45,
+            "change": 288.65,
+            "change_percent": 1.3
         }
     }
 }
